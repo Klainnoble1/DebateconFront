@@ -37,6 +37,9 @@ create table if not exists topics (
   created_at timestamptz default now()
 );
 
+-- Patch: add created_by column if the table already existed without it
+alter table topics add column if not exists created_by uuid references auth.users(id);
+
 -- seed a few starter topics
 insert into topics (title, category, side_a_label, side_b_label) values
   ('AI will create more jobs than it destroys', 'tech', 'Agree', 'Disagree'),
