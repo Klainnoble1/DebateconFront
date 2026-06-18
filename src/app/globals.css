@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  /* Paper + ink */
+  --paper: #FAF8F4;
+  --paper-dim: #F1EDE4;
+  --ink: #16181C;
+  --ink-soft: #4B4E54;
+  --line: #DAD4C6;
+
+  /* Two sides of a debate — never neutral grays */
+  --side-a: #9A2B2B;       /* oxblood — Side A / "For" */
+  --side-a-dim: #F4E5E1;
+  --side-b: #2F4D6B;       /* slate blue — Side B / "Against" */
+  --side-b-dim: #E3EAEF;
+
+  --accent-gold: #B68A3C;  /* used sparingly: timers, live indicators */
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-dim: var(--paper-dim);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-side-a: var(--side-a);
+  --color-side-a-dim: var(--side-a-dim);
+  --color-side-b: var(--side-b);
+  --color-side-b-dim: var(--side-b-dim);
+  --color-accent-gold: var(--accent-gold);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+/* Subtle paper texture via noise — keeps the "printed motion card" feel from being flat */
+.paper-texture {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(22,24,28,0.035) 1px, transparent 0);
+  background-size: 18px 18px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Visible keyboard focus, always */
+:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+}
